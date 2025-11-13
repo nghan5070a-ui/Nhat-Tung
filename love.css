@@ -1,0 +1,92 @@
+:root {
+    --color-pink: #ffb6c1; /* Hồng nhạt */
+    --color-red: #e74c3c;
+    --color-bg: #f5f5f5;
+}
+
+body {
+    font-family: 'Times New Roman', serif;
+    background-color: var(--color-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    perspective: 1000px; /* Cho hiệu ứng 3D */
+}
+
+/* Hiển thị phong bì */
+.envelope {
+    width: 300px;
+    height: 200px;
+    background-color: var(--color-pink);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 1s;
+    position: relative;
+    z-index: 2;
+}
+
+.message-prompt {
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px var(--color-red);
+}
+
+/* Nội dung lá thư (Thẻ) */
+.card {
+    width: 300px;
+    height: 400px;
+    background-color: white;
+    padding: 30px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateY(180deg); /* Ban đầu quay mặt sau */
+    transition: transform 1s, opacity 1s;
+    opacity: 0;
+    z-index: 1;
+    text-align: center;
+}
+
+.card h2 {
+    color: var(--color-red);
+    font-style: italic;
+    margin-top: 0;
+    border-bottom: 1px dashed var(--color-pink);
+    padding-bottom: 10px;
+}
+
+.card p {
+    line-height: 1.6;
+    color: #333;
+}
+
+.signature {
+    margin-top: 30px;
+    font-style: italic;
+    color: var(--color-red);
+    font-size: 1.1em;
+}
+
+/* Lớp CSS khi đã mở */
+.opened .envelope {
+    transform: rotateX(-90deg) scale(0.8);
+    opacity: 0;
+}
+
+.opened .card {
+    transform: translate(-50%, -50%) rotateY(0deg); /* Quay mặt trước */
+    opacity: 1;
+}
